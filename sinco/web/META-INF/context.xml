@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context displayName="Sinco Enhydra Demonstration Application" docBase="${catalina.base}/webapps/sinco" path="/sinco" workDir="work/Catalina/localhost/sinco">
+  <Resource auth="Container" factory="org.enhydra.util.ConfConfigurationFactory" name="configuration/ConfConfigurationFactory" path="${catalina.base}/webapps/sinco/conf/sinco.conf" type="org.enhydra.util.ConfConfiguration"/>
+</Context>
