@@ -206,13 +206,13 @@ public class AudAuditarInformes implements HttpPresentation {
 
         while(icriterios.hasNext()) {
             AudCriteriosDTO criterio = (AudCriteriosDTO)icriterios.next();
-            HTMLElement eltr = (HTMLElement)this.pagHTML.createElement("tr");
+            eltr = (HTMLElement)this.pagHTML.createElement("tr");
             eltr.appendChild(this.newtd("" + criterio.getCriterio() + " " + criterio.getDescripcion(), 2, ""));
             hte.appendChild(eltr);
         }
 
         criterios.clear();
-        HTMLElement eltr = (HTMLElement)this.pagHTML.createElement("tr");
+        eltr = (HTMLElement)this.pagHTML.createElement("tr");
         eltr.appendChild(this.newtd("PREGUNTAS", 2, "ca2"));
         hte.appendChild(eltr);
         AudBloquesDAO ob = new AudBloquesDAO();
@@ -221,7 +221,7 @@ public class AudAuditarInformes implements HttpPresentation {
 
         while(iterator.hasNext()) {
             AudBloquesDTO reg = (AudBloquesDTO)iterator.next();
-            HTMLElement eltr = (HTMLElement)this.pagHTML.createElement("tr");
+            eltr = (HTMLElement)this.pagHTML.createElement("tr");
             eltr.appendChild(this.newtd("" + reg.getPregunta() + " - " + reg.getDescripcionPregunta(), 2, "ca3"));
             hte.appendChild(eltr);
             eltr = (HTMLElement)this.pagHTML.createElement("tr");

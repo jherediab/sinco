@@ -135,19 +135,19 @@ public class ContContratoAct implements HttpPresentation {
                 this.listar(comms, _operacion, numeroEstudio);
             }
 
-            HTMLDivElement sel;
+            HTMLDivElement sel0;
             if (_operacion.equals("P") || _operacion.equals("Nuevo")) {
-                sel = this.pagHTML.getElementTrConsulta();
-                sel.getParentNode().removeChild(sel);
+                sel0 = this.pagHTML.getElementTrConsulta();
+                sel0.getParentNode().removeChild(sel0);
             }
 
             if (_operacion.equals("L") || _operacion.equals("X")) {
-                sel = this.pagHTML.getElementTrCreacionRegistro();
-                sel.getParentNode().removeChild(sel);
+                sel0 = this.pagHTML.getElementTrCreacionRegistro();
+                sel0.getParentNode().removeChild(sel0);
                 sel = this.pagHTML.getElementBtnCrear();
-                sel.getParentNode().removeChild(sel);
-                sel = this.pagHTML.getElementTrDocumentos();
-                sel.getParentNode().removeChild(sel);
+                sel0.getParentNode().removeChild(sel0);
+                sel0 = this.pagHTML.getElementTrDocumentos();
+                sel0.getParentNode().removeChild(sel);
                 oVarios = new Varios();
                 oPermisoAct = oVarios.tienePermiso(miGrupo, "oOficinaJuridica");
                 if (!oPermisoAct) {

@@ -254,7 +254,7 @@ public class CalEstadistica implements HttpPresentation {
                         HTMLElement eltrD;
                         while(reg != null) {
                             int rta = this.evaluarCorte(cuantas, proceso, reg.getProceso(), subProceso, reg.getSubproceso(), meta, reg.getNombreMeta(), nombreArea, reg.getNombreArea());
-                            HTMLElement eltrD;
+                            //HTMLElement eltrD;
                             int i;
                             if (rta > 0) {
                                 eltr = (HTMLElement)this.pagHTML.createElement("tr");
@@ -271,7 +271,7 @@ public class CalEstadistica implements HttpPresentation {
                                 i = 0;
                                 double suma = 0.0D;
 
-                                for(int i = periodo1; i <= periodo2; ++i) {
+                                for(i = periodo1; i <= periodo2; ++i) {
                                     CalLogrosDTO regLogro = null;
 
                                     try {
@@ -422,7 +422,7 @@ public class CalEstadistica implements HttpPresentation {
                             fondo = !fondo;
                             eltr.setAttributeNode(this.newAttr("class", "ct" + (fondo ? "1" : "2")));
                             eltr.appendChild(this.newtd("" + nombreArea, 0, "", 25));
-                            HTMLElement tdResumen = (HTMLElement)this.pagHTML.createElement("td");
+                            tdResumen = (HTMLElement)this.pagHTML.createElement("td");
                             tdResumen = (HTMLElement)this.pagHTML.createElement("table");
                             tdResumen.setAttributeNode(this.newAttr("align", "center"));
                             tdResumen.setAttributeNode(this.newAttr("width", "100%%"));
@@ -506,7 +506,7 @@ public class CalEstadistica implements HttpPresentation {
                         }
 
                         this.pagHTML.setTextElMenu(MenuDO.getMenu("" + this.idNav));
-                        HTMLElement eltr = this.pagHTML.getElementTrSeleccionar();
+                        eltr = this.pagHTML.getElementTrSeleccionar();
                         eltr.getParentNode().removeChild(eltr);
                         eltr = this.pagHTML.getElementTrSubprocesos();
                         eltr.getParentNode().removeChild(eltr);
@@ -767,7 +767,7 @@ public class CalEstadistica implements HttpPresentation {
 
                         if (!operacion.equals("GRAFICA")) {
                             this.pagHTML.setTextElMenu(MenuDO.getMenu("" + this.idNav));
-                            HTMLElement eltr = this.pagHTML.getElementTrSeleccionar();
+                            eltr = this.pagHTML.getElementTrSeleccionar();
                             eltr.getParentNode().removeChild(eltr);
                             eltr = this.pagHTML.getElementTrEstArea();
                             eltr.getParentNode().removeChild(eltr);

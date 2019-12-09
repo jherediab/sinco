@@ -311,19 +311,19 @@ public class PdeMetas implements HttpPresentation {
                 }
 
                 PdeMetasDAO ob = new PdeMetasDAO();
-                PdeAniosDAO reg;
+                //PdeAniosDAO reg;
                 Iterator iterator;
                 PdeAniosDTO regDet;
                 if (_operacion.equals("C")) {
                     rta = ob.crearRegistro(idMeta, codigoMeta, tipoMeta, idUnidadNivel, idObjetivoEspecifico, "", codigoUnidad, nombreMeta, cantidad, lineaBase, indicador, elUsuario);
                     idMeta = rta.getSecuencia();
                     if (rta.isRta()) {
-                        reg = new PdeAniosDAO();
+                       PdeAniosDAO reg0 = new PdeAniosDAO();
                         iterator = resultados.iterator();
 
                         while(iterator.hasNext()) {
                             regDet = (PdeAniosDTO)iterator.next();
-                            rta2 = reg.crearRegistro(0, idMeta, regDet.getAnio(), regDet.getProgramado(), regDet.getEjecutado(), elUsuario);
+                            rta2 = reg0.crearRegistro(0, idMeta, regDet.getAnio(), regDet.getProgramado(), regDet.getEjecutado(), elUsuario);
                             if (!rta2.isRta()) {
                                 throw new ClientPageRedirectException(comms.request.getAppFileURIPath("Mensaje.po?codigo=ErrorPdeMetasAnios&p1=" + rta2.getMensaje()));
                             }
@@ -332,12 +332,12 @@ public class PdeMetas implements HttpPresentation {
                 } else {
                     rta = ob.modificarRegistro(idMeta, codigoMeta, tipoMeta, idUnidadNivel, idObjetivoEspecifico, "", codigoUnidad, nombreMeta, cantidad, lineaBase, indicador, elUsuario);
                     if (rta.isRta()) {
-                        reg = new PdeAniosDAO();
+                       PdeAniosDAO reg0 = new PdeAniosDAO();
                         iterator = resultados.iterator();
 
                         while(iterator.hasNext()) {
                             regDet = (PdeAniosDTO)iterator.next();
-                            rta2 = reg.modificarRegistro(idMeta, regDet.getAnio(), regDet.getProgramado(), regDet.getEjecutado(), elUsuario);
+                            rta2 = reg0.modificarRegistro(idMeta, regDet.getAnio(), regDet.getProgramado(), regDet.getEjecutado(), elUsuario);
                             if (!rta2.isRta()) {
                                 throw new ClientPageRedirectException(comms.request.getAppFileURIPath("Mensaje.po?codigo=ErrorPdeMetasAnios&p1=" + rta2.getMensaje()));
                             }
@@ -383,18 +383,18 @@ public class PdeMetas implements HttpPresentation {
 
                 PdeMetasDAO ob = new PdeMetasDAO();
                 PdeAniosDTO regDet;
-                PdeAniosDAO reg;
+                PdeAniosDAO reg0;
                 Iterator iterator;
                 if (_operacion.equals("C")) {
                     rta = ob.crearRegistro(idMeta, codigoMeta, tipoMeta, idUnidadNivel, idObjetivoEspecifico, proceso, codigoUnidad, nombreMeta, cantidad, lineaBase, indicador, elUsuario);
                     idMeta = rta.getSecuencia();
                     if (rta.isRta()) {
-                        reg = new PdeAniosDAO();
+                        reg0 = new PdeAniosDAO();
                         iterator = resultados.iterator();
 
                         while(iterator.hasNext()) {
                             regDet = (PdeAniosDTO)iterator.next();
-                            rta2 = reg.crearRegistroUltimoNivel(0, idMeta, regDet.getAnio(), regDet.getTr1Programado(), regDet.getTr1Ejecutado(), regDet.getTr2Programado(), regDet.getTr2Ejecutado(), regDet.getTr3Programado(), regDet.getTr3Ejecutado(), regDet.getTr4Programado(), regDet.getTr4Ejecutado(), elUsuario);
+                            rta2 = reg0.crearRegistroUltimoNivel(0, idMeta, regDet.getAnio(), regDet.getTr1Programado(), regDet.getTr1Ejecutado(), regDet.getTr2Programado(), regDet.getTr2Ejecutado(), regDet.getTr3Programado(), regDet.getTr3Ejecutado(), regDet.getTr4Programado(), regDet.getTr4Ejecutado(), elUsuario);
                             if (!rta2.isRta()) {
                                 throw new ClientPageRedirectException(comms.request.getAppFileURIPath("Mensaje.po?codigo=ErrorPdeMetasAnios&p1=" + rta2.getMensaje()));
                             }
@@ -403,12 +403,12 @@ public class PdeMetas implements HttpPresentation {
                 } else {
                     rta = ob.modificarRegistro(idMeta, codigoMeta, tipoMeta, idUnidadNivel, idObjetivoEspecifico, proceso, codigoUnidad, nombreMeta, cantidad, lineaBase, indicador, elUsuario);
                     if (rta.isRta()) {
-                        reg = new PdeAniosDAO();
+                        reg0 = new PdeAniosDAO();
                         iterator = resultados.iterator();
 
                         while(iterator.hasNext()) {
                             regDet = (PdeAniosDTO)iterator.next();
-                            rta2 = reg.modificarRegistroUltimoNivel(idMeta, regDet.getAnio(), regDet.getTr1Programado(), regDet.getTr1Ejecutado(), regDet.getTr2Programado(), regDet.getTr2Ejecutado(), regDet.getTr3Programado(), regDet.getTr3Ejecutado(), regDet.getTr4Programado(), regDet.getTr4Ejecutado(), elUsuario);
+                            rta2 = reg0.modificarRegistroUltimoNivel(idMeta, regDet.getAnio(), regDet.getTr1Programado(), regDet.getTr1Ejecutado(), regDet.getTr2Programado(), regDet.getTr2Ejecutado(), regDet.getTr3Programado(), regDet.getTr3Ejecutado(), regDet.getTr4Programado(), regDet.getTr4Ejecutado(), elUsuario);
                             if (!rta2.isRta()) {
                                 throw new ClientPageRedirectException(comms.request.getAppFileURIPath("Mensaje.po?codigo=ErrorPdeMetasAnios&p1=" + rta2.getMensaje()));
                             }
@@ -486,19 +486,19 @@ public class PdeMetas implements HttpPresentation {
             PdeNivelPlanDTO regN = obj.cargarRegistro(registro.getIdNivel(), 0, 0);
             PdePlanDesarrolloDAO obj2 = new PdePlanDesarrolloDAO();
             PdePlanDesarrolloDTO reg2 = obj2.cargarRegistro(regN.getIdPlanDesarrollo(), 0L);
-            int anioFinal = false;
-            int anioInicial = false;
+            int anioFinal = 0;
+            int anioInicial = 0;
             int idFila = 1;
             int aux = 1;
             FechaDTO fecha = new FechaDTO(reg2.getFechaInicial());
             FechaDTO fecha2 = new FechaDTO(reg2.getFechaFinal());
-            int anioInicial = fecha.getAnno();
-            int anioFinal = fecha2.getAnno();
+            anioInicial = fecha.getAnno();
+            anioFinal = fecha2.getAnno();
             HTMLTableSectionElement hte = this.pagHTML.getElementIdDetalleAnio();
             if (!ultimo) {
                 HTMLElement elem = this.pagHTML.getElementTrimestre();
                 elem.getParentNode().removeChild(elem);
-                HTMLElement elem = this.pagHTML.getElementTrProceso();
+                elem = this.pagHTML.getElementTrProceso();
                 elem.getParentNode().removeChild(elem);
                 elem = this.pagHTML.getElementTrResponsable();
                 elem.getParentNode().removeChild(elem);
@@ -704,30 +704,30 @@ public class PdeMetas implements HttpPresentation {
             reg2 = obj2.cargarRegistro(regN.getIdPlanDesarrollo(), 0L);
         }
 
-        int anioFinal = false;
-        int anioInicial = false;
+        int anioFinal = 0;
+        int anioInicial = 0;
         int idFila = 1;
         FechaDTO fecha = new FechaDTO(reg2.getFechaInicial());
         FechaDTO fecha2 = new FechaDTO(reg2.getFechaFinal());
-        int anioInicial = fecha.getAnno();
-        int anioFinal = fecha2.getAnno();
+        anioInicial = fecha.getAnno();
+        anioFinal = fecha2.getAnno();
         HTMLTableSectionElement hte = this.pagHTML.getElementIdDetalleAnio();
         HTMLTableCellElement elem;
         if (!ultimo) {
             elem = this.pagHTML.getElementTrimestre();
             elem.getParentNode().removeChild(elem);
-            HTMLElement elem = this.pagHTML.getElementTrProceso();
-            elem.getParentNode().removeChild(elem);
-            elem = this.pagHTML.getElementTrResponsable();
-            elem.getParentNode().removeChild(elem);
-            elem = this.pagHTML.getElementAnio();
-            elem.setAttribute("style", "width:25%");
-            elem = this.pagHTML.getElementProgramado();
-            elem.setAttribute("style", "width:25%");
-            elem = this.pagHTML.getElementEjecutado();
-            elem.setAttribute("style", "width:25%");
-            elem = this.pagHTML.getElementPorcentaje();
-            elem.setAttribute("style", "width:25%");
+            HTMLElement elem0 = this.pagHTML.getElementTrProceso();
+            elem0.getParentNode().removeChild(elem);
+            elem0 = this.pagHTML.getElementTrResponsable();
+            elem0.getParentNode().removeChild(elem);
+            elem0 = this.pagHTML.getElementAnio();
+            elem0.setAttribute("style", "width:25%");
+            elem0 = this.pagHTML.getElementProgramado();
+            elem0.setAttribute("style", "width:25%");
+            elem0 = this.pagHTML.getElementEjecutado();
+            elem0.setAttribute("style", "width:25%");
+            elem0 = this.pagHTML.getElementPorcentaje();
+            elem0.setAttribute("style", "width:25%");
 
             while(anioInicial <= anioFinal) {
                 HTMLElement eltr = (HTMLElement)this.pagHTML.createElement("tr");
@@ -864,8 +864,8 @@ public class PdeMetas implements HttpPresentation {
         PdeMetasDTO reg = ob.cargarRegistro(idMeta);
         PdeNivelPlanDAO objPlan = new PdeNivelPlanDAO();
         boolean ultimo = objPlan.ultimoNivel(idNivel);
-        int anioFinal = false;
-        int anioInicial = false;
+        int anioFinal = 0;
+        int anioInicial = 0;
         new FechaDTO();
         new FechaDTO();
         if (reg != null) {
@@ -930,16 +930,16 @@ public class PdeMetas implements HttpPresentation {
             if (!ultimo) {
                 elem = this.pagHTML.getElementTrimestreEd();
                 elem.getParentNode().removeChild(elem);
-                HTMLElement elem = this.pagHTML.getElementTrProcesoEd();
-                elem.getParentNode().removeChild(elem);
-                elem = this.pagHTML.getElementAnioEd();
-                elem.setAttribute("style", "width:25%");
-                elem = this.pagHTML.getElementProgramadoEd();
-                elem.setAttribute("style", "width:25%");
-                elem = this.pagHTML.getElementEjecutadoEd();
-                elem.setAttribute("style", "width:25%");
-                elem = this.pagHTML.getElementPorcentajeEd();
-                elem.setAttribute("style", "width:25%");
+                HTMLElement elem0 = this.pagHTML.getElementTrProcesoEd();
+                elem0.getParentNode().removeChild(elem);
+                elem0 = this.pagHTML.getElementAnioEd();
+                elem0.setAttribute("style", "width:25%");
+                elem0 = this.pagHTML.getElementProgramadoEd();
+                elem0.setAttribute("style", "width:25%");
+                elem0 = this.pagHTML.getElementEjecutadoEd();
+                elem0.setAttribute("style", "width:25%");
+                elem0 = this.pagHTML.getElementPorcentajeEd();
+                elem0.setAttribute("style", "width:25%");
                 arr = objeto.cargarTodos(idMeta, false);
                 iterator = arr.iterator();
 
@@ -969,8 +969,8 @@ public class PdeMetas implements HttpPresentation {
                 arr = objeto.cargarTodos(idMeta, true);
                 iterator = arr.iterator();
                 int idFila = 1;
-                int anioInicial = fecha.getAnno();
-                int anioFinal = fecha2.getAnno();
+                anioInicial = fecha.getAnno();
+                anioFinal = fecha2.getAnno();
                 int trimestre = 1;
                 boolean idAnio = false;
 

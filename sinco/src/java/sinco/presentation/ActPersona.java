@@ -109,7 +109,7 @@ public class ActPersona implements HttpPresentation {
 
         while(iterator.hasNext()) {
             SisUsuariosDTO reg = (SisUsuariosDTO)iterator.next();
-            HTMLOptionElement op = (HTMLOptionElement)this.pagHTML.createElement("option");
+            op = (HTMLOptionElement)this.pagHTML.createElement("option");
             op.setValue("" + reg.getCodigoEmpleado());
             op.appendChild(this.pagHTML.createTextNode(reg.getNombre()));
             combo.appendChild(op);

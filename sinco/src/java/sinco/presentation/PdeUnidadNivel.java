@@ -446,7 +446,7 @@ public class PdeUnidadNivel implements HttpPresentation {
         } catch (Exception var17) {
         }
 
-        HTMLElement sel = this.pagHTML.getElementNomNivelSup();
+        sel = this.pagHTML.getElementNomNivelSup();
         sel.getParentNode().removeChild(sel);
         int idNivel = 0;
 
@@ -492,7 +492,7 @@ public class PdeUnidadNivel implements HttpPresentation {
         } catch (Exception var18) {
         }
 
-        HTMLElement sel = this.pagHTML.getElementNomNivelSup();
+        sel = this.pagHTML.getElementNomNivelSup();
         sel.getParentNode().removeChild(sel);
         int idNivel = 0;
 
@@ -575,12 +575,12 @@ public class PdeUnidadNivel implements HttpPresentation {
             }
 
             if (regN.getObjetivoGeneral().equals("N")) {
-                HTMLElement sel = this.pagHTML.getElementObjGeneralEd();
-                sel.getParentNode().removeChild(sel);
-                sel = this.pagHTML.getElementMetas();
-                sel.getParentNode().removeChild(sel);
-                sel = this.pagHTML.getElementObjEspecificos();
-                sel.getParentNode().removeChild(sel);
+                HTMLElement sel0 = this.pagHTML.getElementObjGeneralEd();
+                sel0.getParentNode().removeChild(sel0);
+                sel0 = this.pagHTML.getElementMetas();
+                sel0.getParentNode().removeChild(sel0);
+                sel0 = this.pagHTML.getElementObjEspecificos();
+                sel0.getParentNode().removeChild(sel0);
                 this.pagHTML.getElementObjGeneralHidden().setValue("N");
             } else {
                 if (regN.getMetasGeneral().equals("N")) {

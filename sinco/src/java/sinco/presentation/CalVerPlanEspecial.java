@@ -211,7 +211,7 @@ public class CalVerPlanEspecial implements HttpPresentation {
                 eltr.appendChild(this.lasMetas(ciclo, area, bloque));
                 hte.appendChild(eltr);
                 bloque.clear();
-                HTMLElement eltr = this.pagHTML.getElementTrSeleccionar();
+                eltr = this.pagHTML.getElementTrSeleccionar();
                 eltr.getParentNode().removeChild(eltr);
             }
         }

@@ -289,7 +289,7 @@ public class PdePlanIndicativo implements HttpPresentation {
         this.pagHTML.getElementIdPlanHidden().setValue("" + idPlanDesarrollo);
         HTMLElement sel = this.pagHTML.getElementDivResultados();
         sel.getParentNode().removeChild(sel);
-        HTMLElement sel = this.pagHTML.getElementBtnConsultar();
+        sel = this.pagHTML.getElementBtnConsultar();
         sel.getParentNode().removeChild(sel);
         sel = this.pagHTML.getElementDivResultados2();
         sel.getParentNode().removeChild(sel);
@@ -338,7 +338,7 @@ public class PdePlanIndicativo implements HttpPresentation {
         this.pagHTML.getElementNombrePlanModalEdicion().setTextContent(planDto.getNombrePlanDesarrollo());
         HTMLElement sel = this.pagHTML.getElementBtnConsultar();
         sel.getParentNode().removeChild(sel);
-        HTMLElement sel = this.pagHTML.getElementDivResultados();
+        sel = this.pagHTML.getElementDivResultados();
         sel.getParentNode().removeChild(sel);
         HTMLSelectElement combo;
         if (criterio1 > 0) {
@@ -406,7 +406,7 @@ public class PdePlanIndicativo implements HttpPresentation {
         this.pagHTML.getElementIdPlanHidden().setValue("" + idPlanDesarrollo);
         HTMLElement sel = this.pagHTML.getElementDivConsulta();
         sel.getParentNode().removeChild(sel);
-        HTMLElement sel = this.pagHTML.getElementBtnConsultar();
+        sel = this.pagHTML.getElementBtnConsultar();
         sel.getParentNode().removeChild(sel);
         PdeNivelPlanDAO ob = new PdeNivelPlanDAO();
         PdeUnidadNivelDAO ob2 = new PdeUnidadNivelDAO();
@@ -653,7 +653,7 @@ public class PdePlanIndicativo implements HttpPresentation {
             }
         }
 
-        HTMLOptionElement op = (HTMLOptionElement)this.pagHTML.createElement("option");
+         op = (HTMLOptionElement)this.pagHTML.createElement("option");
         op.setValue("-1");
         op.appendChild(this.pagHTML.createTextNode("Descarga de Documentos"));
         combo.appendChild(op);

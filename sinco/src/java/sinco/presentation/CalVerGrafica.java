@@ -278,7 +278,7 @@ public class CalVerGrafica implements HttpPresentation {
                 int i = 0;
 
                 while(iterator.hasNext()) {
-                    CalLogrosDTO reg = (CalLogrosDTO)iterator.next();
+                    reg = (CalLogrosDTO)iterator.next();
                     GradientPaint gradientpaint = new GradientPaint(0.0F, 0.0F, new Color(0, 104, 57), 0.0F, 0.0F, new Color(0, 104, 75));
                     if (i % 6 == 0) {
                         gradientpaint = new GradientPaint(0.0F, 0.0F, new Color(0, 104, 57), 0.0F, 0.0F, new Color(0, 104, 75));
@@ -311,10 +311,10 @@ public class CalVerGrafica implements HttpPresentation {
                 }
             } else if (tipoGrafica.equals("T")) {
                 DefaultPieDataset dataset = new DefaultPieDataset();
-                Iterator iterator = arr.iterator();
+                iterator = arr.iterator();
 
                 while(iterator.hasNext()) {
-                    CalLogrosDTO reg = (CalLogrosDTO)iterator.next();
+                    reg = (CalLogrosDTO)iterator.next();
                     dataset.setValue("" + Utilidades.nombreMes(reg.getPeriodo()) + " " + Utilidades.miles2(reg.getValorLogro()), reg.getValorLogro());
                 }
 
@@ -325,7 +325,7 @@ public class CalVerGrafica implements HttpPresentation {
                 iterator = arr.iterator();
 
                 int i;
-                CalLogrosDTO reg;
+                //CalLogrosDTO reg;
                 for(i = 0; iterator.hasNext(); valor += reg.getValorLogro()) {
                     reg = (CalLogrosDTO)iterator.next();
                     Color color = new Color(0, 104, 57);

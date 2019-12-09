@@ -72,30 +72,30 @@ public class ContTerceroAct implements HttpPresentation {
                 this.listar(comms, _operacion);
             }
 
-            HTMLTableRowElement sel;
+            HTMLTableRowElement sel0;
             if (_operacion.equals("P") || _operacion.equals("Nuevo")) {
-                sel = this.pagHTML.getElementTrConsulta();
-                sel.getParentNode().removeChild(sel);
-                sel = this.pagHTML.getElementTrResultados();
-                sel.getParentNode().removeChild(sel);
+                sel0 = this.pagHTML.getElementTrConsulta();
+                sel0.getParentNode().removeChild(sel0);
+                sel0 = this.pagHTML.getElementTrResultados();
+                sel0.getParentNode().removeChild(sel0);
 
                 try {
                     sel = this.pagHTML.getElementMiBotonM();
-                    sel.getParentNode().removeChild(sel);
+                    sel.getParentNode().removeChild(sel0);
                 } catch (Exception var7) {
                 }
             }
 
             if (_operacion.equals("L") || _operacion.equals("X")) {
-                sel = this.pagHTML.getElementTrCreacionRegistro();
-                sel.getParentNode().removeChild(sel);
+                sel0 = this.pagHTML.getElementTrCreacionRegistro();
+                sel0.getParentNode().removeChild(sel0);
             }
 
             if (_operacion.equals("Consultar")) {
-                sel = this.pagHTML.getElementTrConsulta();
-                sel.getParentNode().removeChild(sel);
-                sel = this.pagHTML.getElementTrResultados();
-                sel.getParentNode().removeChild(sel);
+                sel0 = this.pagHTML.getElementTrConsulta();
+                sel0.getParentNode().removeChild(sel0);
+                sel0 = this.pagHTML.getElementTrResultados();
+                sel0.getParentNode().removeChild(sel0);
 
                 try {
                     sel = this.pagHTML.getElementMiBotonG();

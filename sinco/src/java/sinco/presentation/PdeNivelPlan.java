@@ -332,7 +332,7 @@ public class PdeNivelPlan implements HttpPresentation {
         this.pagHTML.getElementIdPlanHidden().setValue("" + idPlanDesarrollo);
         HTMLElement sel = this.pagHTML.getElementDivResultados();
         sel.getParentNode().removeChild(sel);
-        HTMLElement sel = this.pagHTML.getElementBtnConsultar();
+        sel = this.pagHTML.getElementBtnConsultar();
         sel.getParentNode().removeChild(sel);
         sel = this.pagHTML.getElementDivResultados2();
         sel.getParentNode().removeChild(sel);
@@ -461,7 +461,7 @@ public class PdeNivelPlan implements HttpPresentation {
             this.pagHTML.getElementNombrePlanModalEdicion().setTextContent(planDto.getNombrePlanDesarrollo());
             HTMLElement sel = this.pagHTML.getElementBtnConsultar();
             sel.getParentNode().removeChild(sel);
-            HTMLElement sel = this.pagHTML.getElementDivResultados();
+            sel = this.pagHTML.getElementDivResultados();
             sel.getParentNode().removeChild(sel);
             HTMLSelectElement combo;
             if (criterio1 > 0) {
@@ -474,7 +474,7 @@ public class PdeNivelPlan implements HttpPresentation {
                 this.llenarComboDocumentos(combo, "pde_nivel_plan", "id_nivel", "nombre_nivel", "id_plan_desarrollo=" + idPlanDesarrollo, "" + criterio1, true);
             }
 
-            HTMLSelectElement combo;
+            //HTMLSelectElement combo;
             HTMLTableRowElement sel2;
             if (criterio2 > 0) {
                 sel2 = this.pagHTML.getElementTr2();
@@ -542,7 +542,7 @@ public class PdeNivelPlan implements HttpPresentation {
                     ((Collection)arr).add(nivelDTO);
                 }
             } else if (criterio1 < 0) {
-                int cuantas = false;
+                int cuantas = 0;
                 HTMLTableSectionElement hte = this.pagHTML.getElementDetalle2();
                 HTMLTableCellElement eltr = this.pagHTML.getElementTrResultNombre();
                 eltr.setTextContent("Nombre Documento");
@@ -672,19 +672,19 @@ public class PdeNivelPlan implements HttpPresentation {
                             PdeNivelPlanDTO regN = obj.cargarRegistro(registro.getIdNivel(), 0, 0);
                             PdePlanDesarrolloDAO obj2 = new PdePlanDesarrolloDAO();
                             PdePlanDesarrolloDTO reg2 = obj2.cargarRegistro(regN.getIdPlanDesarrollo(), 0L);
-                            int anioFinal = false;
-                            int anioInicial = false;
+                            int anioFinal = 0;
+                            int anioInicial = 0;
                             idFila = 1;
                             int aux = 1;
                             FechaDTO fecha = new FechaDTO(reg2.getFechaInicial());
                             FechaDTO fecha2 = new FechaDTO(reg2.getFechaFinal());
-                            int anioInicial = fecha.getAnno();
-                            int anioFinal = fecha2.getAnno();
+                            anioInicial = fecha.getAnno();
+                            anioFinal = fecha2.getAnno();
                             HTMLTableSectionElement hteEditar = this.pagHTML.getElementIdDetalleAnio();
                             if (!ultimo) {
                                 HTMLElement elem = this.pagHTML.getElementTrimestre();
                                 elem.getParentNode().removeChild(elem);
-                                HTMLElement elem = this.pagHTML.getElementTrProceso();
+                                elem = this.pagHTML.getElementTrProceso();
                                 elem.getParentNode().removeChild(elem);
                                 elem = this.pagHTML.getElementTrResponsable();
                                 elem.getParentNode().removeChild(elem);
@@ -733,7 +733,7 @@ public class PdeNivelPlan implements HttpPresentation {
                                 elem.setAttribute("style", "width:20%");
                                 elem = this.pagHTML.getElementPorcentaje();
                                 elem.setAttribute("style", "width:20%");
-                                HTMLSelectElement combo = this.pagHTML.getElementProceso();
+                                combo = this.pagHTML.getElementProceso();
                                 this.llenarCombo(combo, "procesos", "codigo", "descripcion", "1=1", "" + reg.getProceso(), true);
                                 int trimestre = 1;
                                 boolean idAnio = false;
@@ -828,7 +828,7 @@ public class PdeNivelPlan implements HttpPresentation {
 
                             SisUnidadesMedidaDAO dao2 = new SisUnidadesMedidaDAO();
                             SisUnidadesMedidaDTO regis = dao2.cargarRegistro(reg.getCodigoUnidad(), 0);
-                            HTMLSelectElement combo = this.pagHTML.getElementTipoUnidad();
+                            combo = this.pagHTML.getElementTipoUnidad();
                             this.llenarCombo(combo, "sis_grupos_unidades", "codigo_grupo", "nombre_grupo", "1=1", "" + regis.getCodigoGrupo(), true);
                             combo = this.pagHTML.getElementCodigoUnidad();
                             this.llenarCombo(combo, "sis_unidades_medida", "codigo_unidad", "nombre_unidad", "codigo_grupo=" + regis.getCodigoGrupo(), "" + reg.getCodigoUnidad(), true);
@@ -847,8 +847,8 @@ public class PdeNivelPlan implements HttpPresentation {
                             PdeMetasDTO reg = obMetas.cargarRegistro(idMeta);
                             new PdeNivelPlanDAO();
                             ultimo = obj.ultimoNivel(nivelDTO2.getIdNivel());
-                            int anioFinal = false;
-                            int anioInicial = false;
+                            int anioFinal = 0;
+                            int anioInicial = 0;
                             new FechaDTO();
                             new FechaDTO();
                             if (reg != null) {
@@ -912,12 +912,12 @@ public class PdeNivelPlan implements HttpPresentation {
                                 hteEd = this.pagHTML.getElementDetalleEd();
                                 double consolidadoProgramado = 0.0D;
                                 double consolidadoEjecutado = 0.0D;
-                                HTMLTableCellElement elem;
+                                HTMLTableCellElement elem0;
                                 Collection arrEd;
                                 Iterator iteratorEd;
                                 if (!ultimo) {
-                                    elem = this.pagHTML.getElementTrimestreEd();
-                                    elem.getParentNode().removeChild(elem);
+                                    elem0 = this.pagHTML.getElementTrimestreEd();
+                                    elem0.getParentNode().removeChild(elem0);
                                     HTMLElement elem = this.pagHTML.getElementTrProcesoEd();
                                     elem.getParentNode().removeChild(elem);
                                     elem = this.pagHTML.getElementAnioEd();
@@ -943,22 +943,22 @@ public class PdeNivelPlan implements HttpPresentation {
 
                                     arrEd.clear();
                                 } else {
-                                    elem = this.pagHTML.getElementTrimestreEd();
-                                    elem.setAttribute("style", "width:20%");
-                                    elem = this.pagHTML.getElementAnioEd();
-                                    elem.setAttribute("style", "width:20%");
-                                    elem = this.pagHTML.getElementProgramadoEd();
-                                    elem.setAttribute("style", "width:20%");
-                                    elem = this.pagHTML.getElementEjecutadoEd();
-                                    elem.setAttribute("style", "width:20%");
-                                    elem = this.pagHTML.getElementPorcentajeEd();
-                                    elem.setAttribute("style", "width:20%");
+                                    elem0 = this.pagHTML.getElementTrimestreEd();
+                                    elem0.setAttribute("style", "width:20%");
+                                    elem0 = this.pagHTML.getElementAnioEd();
+                                    elem0.setAttribute("style", "width:20%");
+                                    elem0 = this.pagHTML.getElementProgramadoEd();
+                                    elem0.setAttribute("style", "width:20%");
+                                    elem0 = this.pagHTML.getElementEjecutadoEd();
+                                    elem0.setAttribute("style", "width:20%");
+                                    elem0 = this.pagHTML.getElementPorcentajeEd();
+                                    elem0.setAttribute("style", "width:20%");
                                     this.pagHTML.setTextProcesoEd("" + reg.getNombreProceso());
                                     arrEd = objeto.cargarTodos(idMeta, true);
                                     iteratorEd = arrEd.iterator();
-                                    int idFila = 1;
-                                    int anioInicial = fecha.getAnno();
-                                    int anioFinal = fecha2.getAnno();
+                                    idFila = 1;
+                                    anioInicial = fecha.getAnno();
+                                    anioFinal = fecha2.getAnno();
                                     int trimestre = 1;
                                     boolean idAnio = false;
 
@@ -1034,7 +1034,7 @@ public class PdeNivelPlan implements HttpPresentation {
                         } else {
                             modal = this.pagHTML.getElementCreacionModalMetas();
                             modal.setAttribute("style", "display : block");
-                            HTMLSelectElement combo = this.pagHTML.getElementTipoUnidad();
+                            combo = this.pagHTML.getElementTipoUnidad();
                             this.llenarCombo(combo, "sis_grupos_unidades", "codigo_grupo", "nombre_grupo", "1=1", "", true);
                             combo = this.pagHTML.getElementTipoMeta();
                             this.comboMultivalores(combo, "TIPO_META", "", true);
@@ -1042,35 +1042,35 @@ public class PdeNivelPlan implements HttpPresentation {
                             this.llenarCombo(combo, "procesos", "codigo", "descripcion", "1=1", "", true);
                             elScript = this.generarAreas();
                             this.pagHTML.setTextScriptAreas("" + elScript);
-                            boolean ultimo = false;
+                            ultimo = false;
                             new PdePlanDesarrolloDTO();
                             PdeNivelPlanDAO obj = new PdeNivelPlanDAO();
                             ultimo = obj.ultimoNivel(nivelDTO2.getIdNivel());
                             PdePlanDesarrolloDAO obj2 = new PdePlanDesarrolloDAO();
                             PdePlanDesarrolloDTO reg2 = obj2.cargarRegistro(nivelDTO2.getIdPlanDesarrollo(), 0L);
-                            int anioFinal = false;
-                            int anioInicial = false;
-                            int idFila = 1;
+                            int anioFinal = 0;
+                            int anioInicial = 0;
+                             idFila = 1;
                             FechaDTO fecha = new FechaDTO(reg2.getFechaInicial());
                             FechaDTO fecha2 = new FechaDTO(reg2.getFechaFinal());
-                            int anioInicial = fecha.getAnno();
-                            int anioFinal = fecha2.getAnno();
+                             anioInicial = fecha.getAnno();
+                             anioFinal = fecha2.getAnno();
                             hteEd = this.pagHTML.getElementIdDetalleAnio();
                             HTMLTableCellElement elem;
                             if (!ultimo) {
                                 elem = this.pagHTML.getElementTrimestre();
                                 elem.getParentNode().removeChild(elem);
-                                HTMLElement elem = this.pagHTML.getElementTrProceso();
-                                elem.getParentNode().removeChild(elem);
-                                elem = this.pagHTML.getElementTrResponsable();
-                                elem.getParentNode().removeChild(elem);
-                                elem = this.pagHTML.getElementAnio();
-                                elem.setAttribute("style", "width:25%");
-                                elem = this.pagHTML.getElementProgramado();
-                                elem.setAttribute("style", "width:25%");
-                                elem = this.pagHTML.getElementEjecutado();
-                                elem.setAttribute("style", "width:25%");
-                                elem = this.pagHTML.getElementPorcentaje();
+                                HTMLElement elem0 = this.pagHTML.getElementTrProceso();
+                                elem0.getParentNode().removeChild(elem);
+                                elem0 = this.pagHTML.getElementTrResponsable();
+                                elem0.getParentNode().removeChild(elem);
+                                elem0 = this.pagHTML.getElementAnio();
+                                elem0.setAttribute("style", "width:25%");
+                                elem0 = this.pagHTML.getElementProgramado();
+                                elem0.setAttribute("style", "width:25%");
+                                elem0 = this.pagHTML.getElementEjecutado();
+                                elem0.setAttribute("style", "width:25%");
+                                elem0 = this.pagHTML.getElementPorcentaje();
                                 elem.setAttribute("style", "width:25%");
 
                                 while(anioInicial <= anioFinal) {
@@ -1152,7 +1152,7 @@ public class PdeNivelPlan implements HttpPresentation {
         this.pagHTML.getElementIdPlanHidden().setValue("" + idPlanDesarrollo);
         HTMLElement sel = this.pagHTML.getElementDivConsulta();
         sel.getParentNode().removeChild(sel);
-        HTMLElement sel = this.pagHTML.getElementBtnConsultar();
+         sel = this.pagHTML.getElementBtnConsultar();
         sel.getParentNode().removeChild(sel);
         PdeNivelPlanDAO ob = new PdeNivelPlanDAO();
         PdeUnidadNivelDAO ob2 = new PdeUnidadNivelDAO();
@@ -1399,7 +1399,7 @@ public class PdeNivelPlan implements HttpPresentation {
             }
         }
 
-        HTMLOptionElement op = (HTMLOptionElement)this.pagHTML.createElement("option");
+         op = (HTMLOptionElement)this.pagHTML.createElement("option");
         op.setValue("-1");
         op.appendChild(this.pagHTML.createTextNode("Descarga de Documentos"));
         combo.appendChild(op);

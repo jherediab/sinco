@@ -168,8 +168,8 @@ public class AMDetalleV2 implements HttpPresentation {
 
                 long diasCorridos = Utilidades2.diferenciaEnDias(regAccion.getFechaGenerada(), Utilidades.fechaActual());
                 if (regAccion.getCodigoEstado() != 0 && regAccion.getCodigoEstado() != 1 || diasCorridos > (long)ParametrosDTO.getInt("AM_numero.dias.editar") || lectura != 0 || idNav != regAccion.getEmpleadoCliente() && (!permisoModificar || !Utilidades.esSecuenciaHija(secuenciaProveedor, regAreaNav.getSecuencia()))) {
-                    HTMLElement eltr = this.pagHTML.getElementTrPreModificar();
-                    eltr.getParentNode().removeChild(eltr);
+                     HTMLElement eltr2 = this.pagHTML.getElementTrPreModificar();
+                    eltr2.getParentNode().removeChild(eltr2);
                 }
 
                 boolean bAnularAccion = regAccion.getCodigoEstado() != 0 || lectura == 1;
@@ -178,17 +178,16 @@ public class AMDetalleV2 implements HttpPresentation {
                 }
 
                 if (bAnularAccion) {
-                    HTMLElement eltr = this.pagHTML.getElementTrAnular();
-                    eltr.getParentNode().removeChild(eltr);
-                }
+                    HTMLElement eltr2 = this.pagHTML.getElementTrAnular();
+                    eltr2.getParentNode().removeChild(eltr2);                }
 
                 if (!this.cerrar || regAccion.getCodigoEstado() != 1 || idNav != regAccion.getEmpleadoCliente() && (!permisoCerrarEnArea || elNavegante.getArea() != regAccion.getAreaImplanta()) && (!permisoCerrar || !Utilidades.esSecuenciaHija(secuenciaProveedor, regAreaNav.getSecuencia())) || lectura != 0) {
-                    HTMLElement eltr = this.pagHTML.getElementTrCerrar();
-                    eltr.getParentNode().removeChild(eltr);
+                    HTMLElement eltr2 = this.pagHTML.getElementTrCerrar();
+                    eltr2.getParentNode().removeChild(eltr2);
                 }
 
                 int codigoMadrina = 0;
-                HTMLTableCellElement eltr;
+                //HTMLTableCellElement eltr;
                 if (regAccion.getCodigoEstado() != 5 || regAreaNav.getNivel() > 4 && regAccion.getEmpleadoCliente() == elNavegante.getCodigoEmpleado() || regAccion.getOrigen().equals("ACI") && codigoMadrina != elNavegante.getCodigoEmpleado() || (!permisoCalificarEnArea || elNavegante.getArea() != regAccion.getAreaImplanta()) && (!permisoCalificarEnArea || !Utilidades.esSecuenciaHija(secuenciaProveedor, regAreaNav.getSecuencia())) && !permisoCalificarGeneral && codigoMadrina != elNavegante.getCodigoEmpleado()) {
                     eltr = this.pagHTML.getElementTrCalificar();
                     eltr.getParentNode().removeChild(eltr);
@@ -202,8 +201,8 @@ public class AMDetalleV2 implements HttpPresentation {
                 if (regAccion.getCumplio().equals("N") && elNavegante.getArea() == ParametrosDTO.getInt("codigo.gerencia.sinco.servicio")) {
                     this.pagHTML.getElementIdNumeroGC().setValue("" + numero);
                 } else {
-                    HTMLElement eltr = this.pagHTML.getElementTrObsGerencia();
-                    eltr.getParentNode().removeChild(eltr);
+                    HTMLElement eltr2 = this.pagHTML.getElementTrObsGerencia();
+                    eltr2.getParentNode().removeChild(eltr2);
                 }
 
                 if (!permisoVerBitacora) {
@@ -244,8 +243,8 @@ public class AMDetalleV2 implements HttpPresentation {
         eltr.appendChild(this.newtd(reg.getPorque(), "dat", 3));
         elemento.appendChild(eltr);
         eltr = (HTMLElement)this.pagHTML.createElement("tr");
-        HTMLElement eltr = (HTMLElement)this.pagHTML.createElement("td");
-        eltr.appendChild(this.newtd("Acción", "tit", 0));
+        HTMLElement eltr2 = (HTMLElement)this.pagHTML.createElement("td");
+        eltr2.appendChild(this.newtd("Acción", "tit", 0));
         HTMLElement tdDetalle = (HTMLElement)this.pagHTML.createElement("span");
         tdDetalle.appendChild(this.pagHTML.createTextNode(reg.getAccion()));
         tdDetalle.setAttributeNode(this.newAttr("id", "_causa" + reg.getConsecutivo()));
@@ -303,28 +302,28 @@ public class AMDetalleV2 implements HttpPresentation {
             HTMLInputElement hidden = (HTMLInputElement)this.pagHTML.createElement("input");
             hidden.setAttributeNode(this.newAttr("type", "hidden"));
             hidden.setAttributeNode(this.newAttr("id", "H" + id));
-            HTMLTextAreaElement inp = (HTMLTextAreaElement)this.pagHTML.createElement("TEXTAREA");
-            inp.setName("observacion");
-            inp.setAttributeNode(this.newAttr("id", "" + id));
-            inp.setRows(6);
-            inp.setCols(130);
-            inp.setAttributeNode(this.newAttr("onkeypress", "validarTecla(event, 'AL');"));
-            inp.setAttributeNode(this.newAttr("onkeyDown", "vallength('" + id + "','H" + id + "',512);"));
-            inp.setAttributeNode(this.newAttr("onkeyup", "vallength('" + id + "','H" + id + "',512);"));
-            inp.setAttributeNode(this.newAttr("onpaste", "vallength('" + id + "','H" + id + "',512);"));
+            HTMLTextAreaElement inp2 = (HTMLTextAreaElement)this.pagHTML.createElement("TEXTAREA");
+            inp2.setName("observacion");
+            inp2.setAttributeNode(this.newAttr("id", "" + id));
+            inp2.setRows(6);
+            inp2.setCols(130);
+            inp2.setAttributeNode(this.newAttr("onkeypress", "validarTecla(event, 'AL');"));
+            inp2.setAttributeNode(this.newAttr("onkeyDown", "vallength('" + id + "','H" + id + "',512);"));
+            inp2.setAttributeNode(this.newAttr("onkeyup", "vallength('" + id + "','H" + id + "',512);"));
+            inp2.setAttributeNode(this.newAttr("onpaste", "vallength('" + id + "','H" + id + "',512);"));
             tdDetalle.appendChild(hidden);
-            tdDetalle.appendChild(inp);
+            tdDetalle.appendChild(inp2);
             eltr.appendChild(tdDetalle);
             elemento.appendChild(eltr);
             eltr = (HTMLElement)this.pagHTML.createElement("tr");
             tdDetalle = (HTMLElement)this.pagHTML.createElement("td");
             tdDetalle.setAttributeNode(this.newAttr("class", "dat2"));
             tdDetalle.setAttributeNode(this.newAttr("colspan", "4"));
-            HTMLInputElement inp = (HTMLInputElement)this.pagHTML.createElement("input");
-            inp.setAttribute("type", "Submit");
-            inp.setAttribute("class", "BOT");
-            inp.setValue("Grabar");
-            tdDetalle.appendChild(inp);
+            HTMLInputElement inp3 = (HTMLInputElement)this.pagHTML.createElement("input");
+            inp3.setAttribute("type", "Submit");
+            inp3.setAttribute("class", "BOT");
+            inp3.setValue("Grabar");
+            tdDetalle.appendChild(inp3);
             eltr.appendChild(tdDetalle);
             elemento.appendChild(eltr);
         }
@@ -362,12 +361,12 @@ public class AMDetalleV2 implements HttpPresentation {
             op.appendChild(this.pagHTML.createTextNode(""));
             comboCausaCacao.appendChild(op);
             HTMLSelectElement comboCausaResponsable = this.pagHTML.getElementCausaR();
-            HTMLOptionElement op = (HTMLOptionElement)this.pagHTML.createElement("option");
+            op = (HTMLOptionElement)this.pagHTML.createElement("option");
             op.setValue("");
             op.appendChild(this.pagHTML.createTextNode(""));
             comboCausaResponsable.appendChild(op);
             HTMLSelectElement comboCausaEstado = this.pagHTML.getElementCausaE();
-            HTMLOptionElement op = (HTMLOptionElement)this.pagHTML.createElement("option");
+            op = (HTMLOptionElement)this.pagHTML.createElement("option");
             op.setValue("");
             op.appendChild(this.pagHTML.createTextNode(""));
             comboCausaEstado.appendChild(op);
@@ -375,7 +374,7 @@ public class AMDetalleV2 implements HttpPresentation {
 
             while(true) {
                 AMCausasDTO reg;
-                HTMLOptionElement op;
+                //HTMLOptionElement op;
                 do {
                     do {
                         do {

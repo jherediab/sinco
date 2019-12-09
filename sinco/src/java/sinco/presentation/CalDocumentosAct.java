@@ -86,7 +86,7 @@ public class CalDocumentosAct implements HttpPresentation {
                         }
 
                         if (!bExisteDoc) {
-                            HTMLElement sel = this.pagHTML.getElementMiBotonD();
+                            sel = this.pagHTML.getElementMiBotonD();
                             sel.getParentNode().removeChild(sel);
                             sel = this.pagHTML.getElementMiBotonB();
                             sel.getParentNode().removeChild(sel);
@@ -503,7 +503,7 @@ public class CalDocumentosAct implements HttpPresentation {
                     script = "var mResponsables=new Array(" + arrResponsables.size() + ");";
                     script = script + " var iContB=0;";
 
-                    CalDocumentosDTO regD;
+                    //CalDocumentosDTO regD;
                     for(Iterator iteratorRes = arrResponsables.iterator(); iteratorRes.hasNext(); script = script + " mResponsables[iContB++]=new add_area(" + regD.getCodigoArea() + ",'" + regD.getDescripcion() + "');") {
                         regD = (CalDocumentosDTO)iteratorRes.next();
                     }
@@ -615,7 +615,7 @@ public class CalDocumentosAct implements HttpPresentation {
         Collection<CalProcesosDTO> arr = rs.cargarTablaProcesos();
         rs.close();
 
-        HTMLOptionElement op;
+        //HTMLOptionElement op;
         for(Iterator iterator = arr.iterator(); iterator.hasNext(); combo.appendChild(op)) {
             CalProcesosDTO reg = (CalProcesosDTO)iterator.next();
             op = (HTMLOptionElement)this.pagHTML.createElement("option");
@@ -640,7 +640,7 @@ public class CalDocumentosAct implements HttpPresentation {
         Collection<CalSubProcesosDTO> arr = rs.cargarDeProceso(proceso);
         rs.close();
 
-        HTMLOptionElement op;
+        //HTMLOptionElement op;
         for(Iterator iterator = arr.iterator(); iterator.hasNext(); combo.appendChild(op)) {
             CalSubProcesosDTO reg = (CalSubProcesosDTO)iterator.next();
             op = (HTMLOptionElement)this.pagHTML.createElement("option");
