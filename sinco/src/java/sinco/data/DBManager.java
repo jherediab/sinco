@@ -44,7 +44,11 @@ import sinco.business.Utilidades;
         try {
             Context initContext = new InitialContext();
             Context envContext = (Context)initContext.lookup("java:/comp/env");
-            DataSource ds = (DataSource)envContext.lookup(ParametrosDTO.getString("ConectorBaseDatos"));
+            //DataSource ds = (DataSource)envContext.lookup(ParametrosDTO.getString("ConectorBaseDatos"));
+            
+            DataSource ds = (DataSource) envContext.lookup("jdbc/postgres");
+            
+            
             if (envContext == null) {
                 throw new Exception("Error: No Context");
             } else if (ds == null) {
